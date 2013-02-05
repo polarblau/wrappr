@@ -1,0 +1,11 @@
+!!!
+%html
+  %head
+    %title Wrappr
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application", "//use.typekit.net/zlz4wzl.js"
+    = csrf_meta_tags
+    :javascript
+      try{Typekit.load();}catch(e){}
+  %body
+    = yield

@@ -1,0 +1,27 @@
+%article
+  = form_for @document, :html => { :id => 'document' } do |f|
+    %fieldset.header
+      #loading
+      .wrapper
+        %label.title
+          = f.text_field :title, :title => "Your document's title", :placeholder => @document.title
+        .save
+          %button(type="submit")
+            Save
+        - if @document.creator == current_user
+          %label.shared(class="#{ 'selected' if @document.shared? }")
+            = f.check_box :shared
+            Shared
+
+    %fieldset.body
+      .wrapper
+        = f.text_area :content, :id => 'document-content'
+
+/
+  %p
+    - if current_user.anonymous?
+      = link_to "Register!", new_registration_path(current_user)
+    - else
+      You are logged in as
+      = current_user.email
+

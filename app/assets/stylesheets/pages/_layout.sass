@@ -1,0 +1,136 @@
+html
+  background: $black
+
+// Typo
+body
+  color: $black
+
+// Settings
+$padding: 20px
+
+article
+  +box-shadow(0 0 10px 0 #000)
+  max-width: 50em
+  margin: 0 auto
+  background: $white
+
+  fieldset
+    border: none
+    margin: 0
+    padding: 0
+
+    .wrapper
+      position: relative
+
+    // edit nav
+
+    &.header
+      border-bottom: 1px solid #fff
+      position: relative
+      +sans
+
+      #loading
+        height: 0
+        position: absolute
+        top: 0
+        width: 100%
+        +transition (all 0.15s ease-in-out)
+        opacity: 0
+        background: url(image-path('shared/loading.gif')) repeat-x
+
+        &.visible
+          height: 5px
+          opacity: 1
+          +transition (all 0.15s ease-in-out)
+
+      .wrapper
+        padding: $padding
+        border-bottom: 1px solid lighten($gray, 20%)
+
+        .title
+          input
+            border: none
+            outline: none
+            background: none
+            padding: 0.25em 0
+            color: $gray
+            width: 65%
+            +mono
+            font-size: 1.1em
+
+            &:active, &:focus
+              color: $dark-gray
+
+        .shared
+          float: right
+          font-size: 0.85em
+          line-height: 1.5em
+          padding: 0 $padding
+          color: $gray
+          line-height: 1.75em
+
+          &.selected
+            color: $dark-gray
+
+          &:hover
+            cursor: pointer
+
+        .save
+          float: right
+
+          button
+            background: none
+            border: 1px solid darken($white, 20%)
+            border-radius: 1em
+            display: inline-block
+            +linear-gradient(darken($white, 5%), darken($white, 10%))
+            text-shadow: 0 1px $white
+            padding: 0.35em 1.5em 0.2em
+            font-weight: bold
+            color: $dark-gray
+            font-size: 0.8em
+            text-align: center
+            text-decoration: none
+            text-transform: uppercase
+            +box-shadow(0 1px 0 0 transparentize($gray, 0.75))
+
+            &:hover
+              background: lighten($blue, 30%)
+              color: $blue
+              border-color: $blue
+              text-shadow: none
+              +box-shadow(0 0 0 0 transparentize($gray, 0.75))
+
+            &:active
+              background: $blue
+              color: $white
+              border-color: $blue
+              +box-shadow(0 0 0 0 transparentize($gray, 0.25) inset)
+              text-shadow: none
+
+
+    // The body
+    &.body
+      .wrapper
+        +clearfix
+        min-height: 40em
+
+      textarea
+        +mono
+        color: $dark-gray
+        position: absolute
+        background: none
+        top: $padding
+        left: $padding
+        right: $padding
+        bottom: $padding
+        resize: none
+        border: none
+        outline: none
+        font-size: 1.1em
+        line-height: 1.25em
+        overflow: auto
+        white-space: nowrap
+
+        &.wrapping
+          cursor: crosshair
